@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health & Informal Workers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="light-mode">
+
+<!-- Navigation Bar -->
+<div class="navbar-container">
+    <nav class="navbar header-container">
+        <div class="header-item">
+            <img src="mental_health.png" alt="Logo" class="logo">
+            <h1>Mental Health & Informal Workers</h1>
+        </div>
+        <ul class="navbar-list">
+            <li class="header-item"><a href="#about">About</a></li>
+            <li class="header-item"><a href="#issues">Issues</a></li>
+            <li class="header-item"><a href="#solutions">Solutions</a></li>
+            <li class="header-item"><a href="#petition">Petition</a></li>
+            <li class="header-item"><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!-- About Section with Call to Action and Signature List -->
+<section id="about" class="section">
+    <div class="container">
+        <h2>About the Initiative</h2>
+        <p>According to global reports, 15% of working-age adults live with a mental health disorder. Employment conditions play a major role in mental well-being, with structured work environments promoting stability and poor conditions increasing mental health risks.</p>
+        <p>Informal workers in India face specific challenges, such as financial instability, lack of healthcare, and limited mental health resources. Our initiative seeks to raise awareness and encourage support for improved mental health services and resources for informal workers.</p>
+    </div>
+    <div class="container about-container">
+        <div class="call-to-action">
+            <h2>Support Our Initiative</h2>
+            <p>Join our efforts to advocate for the mental health needs of informal workers across India. Sign the petition to promote meaningful change.</p>
+            <a href="#petition" class="btn">Sign the Petition</a>
+        </div>
+        <div class="signature-section">
+            <h3>Signatures</h3>
+            <ul id="signature-list"></ul>
+        </div>
+    </div>
+</section>
+
+<!-- Issues Section -->
+<section id="issues" class="section">
+    <div class="container">
+        <h2>Key Challenges</h2>
+        <p>Informal workers experience challenges that impact their mental health and well-being:</p>
+        <ul>
+            <li>Financial instability and lack of income security</li>
+            <li>Limited access to healthcare and mental health services</li>
+            <li>Poor working conditions and lack of social protection</li>
+            <li>Social stigma and isolation</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Solutions Section -->
+<section id="solutions" class="section">
+    <div class="container">
+        <h2>Recommended Actions</h2>
+        <p>To support the mental health needs of informal workers, we recommend the following actions:</p>
+        <ul>
+            <li>Establish social welfare programs and financial support</li>
+            <li>Expand access to affordable and comprehensive mental health services</li>
+            <li>Promote secure employment and safe working conditions</li>
+            <li>Increase awareness to reduce stigma around mental health</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Petition Form Section -->
+<section id="petition" class="section">
+    <div class="container">
+        <h2>Sign the Petition</h2>
+        <form id="petition-form" class="petition-form">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+            </div>
+            <button type="submit" class="btn">Sign Petition</button>
+        </form>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section contact-section">
+    <div class="container">
+        <h2>Contact Information</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <input type="text" id="contact-name" name="contact-name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="contact-email" name="contact-email" placeholder="Your Email Address" required>
+            </div>
+            <div class="form-group">
+                <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Government of India - Mental Health Initiative. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+<script>
+// JavaScript for Light/Dark Mode Toggle
+const toggleButton = document.getElementById('toggle-dark-mode');
+toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('light-mode');
+});
+
+// JavaScript for Petition Form Validation and Signature Addition
+const petitionForm = document.getElementById('petition-form');
+const signatureList = document.getElementById('signature-list');
+
+petitionForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    let isValid = true;
+
+    // Simple validation checks for name and email
+    if (nameInput.value.trim() === '') {
+        nameInput.classList.add('invalid');
+        isValid = false;
+    } else {
+        nameInput.classList.remove('invalid');
+    }
+
+    if (!emailInput.value.includes('@')) {
+        emailInput.classList.add('invalid');
+        isValid = false;
+    } else {
+        emailInput.classList.remove('invalid');
+    }
+
+    // Add valid signatures to the list
+    if (isValid) {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${nameInput.value} - ${emailInput.value}`;
+        signatureList.appendChild(listItem);
+
+        // Clear form fields
+        nameInput.value = '';
+        emailInput.value = '';
+    }
+});
+</script>
+
+</html>
